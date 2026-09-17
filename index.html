@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syntropy Health — The Sovereign Clinical Data Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .clean-card {
+            background-color: rgba(24, 24, 27, 0.45);
+            border: 1px solid rgba(39, 39, 42, 0.7);
+        }
+        .clean-card:hover {
+            border-color: rgba(63, 63, 70, 0.9);
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen antialiased selection:bg-zinc-800 selection:text-zinc-200">
+    <!-- Background subtle grid -->
+    <div class="fixed inset-0 bg-[linear-gradient(to_right,#27272a08_1px,transparent_1px),linear-gradient(to_bottom,#27272a08_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none"></div>
+
+    <div class="relative max-w-5xl mx-auto px-6 py-8 sm:py-12 space-y-16">
+        <!-- Navigation -->
+        <header class="flex items-center justify-between border-b border-zinc-800/80 pb-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center font-bold text-sm text-zinc-100 shadow-sm">
+                    S
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-sm font-semibold tracking-tight text-zinc-200 uppercase">Syntropy Health</span>
+                    <span class="text-[10px] text-zinc-400 font-mono">By Syntropy Labs</span>
+                </div>
+            </div>
+            <nav class="flex items-center gap-6 text-xs text-zinc-400">
+                <a href="/docs" class="hover:text-white transition">Documentation</a>
+                <a href="/privacy" class="hover:text-white transition">Privacy</a>
+                <a href="/terms" class="hover:text-white transition">Terms</a>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="text-center space-y-6 max-w-3xl mx-auto pt-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-medium text-zinc-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                <span>Self-Hosted &bull; SMART on FHIR R4 &bull; USCDI v3</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-zinc-100 leading-tight">
+                Your Clinical Health Records.<br>
+                <span class="text-zinc-400">Sovereign, Private, and Local.</span>
+            </h1>
+
+            <p class="text-sm sm:text-base text-zinc-400 leading-relaxed max-w-2xl mx-auto">
+                Connect directly to your medical records across Epic MyChart, Kaiser Permanente, and SMART on FHIR providers. Zero cloud data storage. Zero tracking. 100% stored and processed on your own machine.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                <a href="/docs" class="w-full sm:w-auto px-5 py-2.5 rounded-md bg-zinc-100 hover:bg-white text-zinc-950 text-xs font-semibold transition shadow-sm">
+                    View Architecture & Docs &rarr;
+                </a>
+                <a href="/privacy" class="w-full sm:w-auto px-5 py-2.5 rounded-md bg-zinc-900 hover:bg-zinc-800 text-zinc-300 text-xs font-medium border border-zinc-800 transition">
+                    Data Privacy & DUQ Statement
+                </a>
+            </div>
+        </section>
+
+        <!-- Feature Pillars -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4">
+            <div class="p-6 rounded-xl clean-card space-y-3">
+                <div class="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-xs font-mono text-zinc-300">
+                    01
+                </div>
+                <h3 class="text-sm font-semibold text-zinc-100">Local-First Custody</h3>
+                <p class="text-xs text-zinc-400 leading-relaxed">
+                    Your health history, diagnostic panels, prescriptions, and conditions live exclusively in your local database. No cloud data leakage or centralized attack vectors.
+                </p>
+            </div>
+
+            <div class="p-6 rounded-xl clean-card space-y-3">
+                <div class="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-xs font-mono text-zinc-300">
+                    02
+                </div>
+                <h3 class="text-sm font-semibold text-zinc-100">Zero-Knowledge Relay</h3>
+                <p class="text-xs text-zinc-400 leading-relaxed">
+                    The public gateway on <code class="font-mono text-zinc-300">health.syntropylabs.io</code> acts solely as a client-side OAuth router. It possesses no database and never inspects or stores health tokens.
+                </p>
+            </div>
+
+            <div class="p-6 rounded-xl clean-card space-y-3">
+                <div class="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-xs font-mono text-zinc-300">
+                    03
+                </div>
+                <h3 class="text-sm font-semibold text-zinc-100">USCDI v3 Clinical Engine</h3>
+                <p class="text-xs text-zinc-400 leading-relaxed">
+                    Standardized FHIR R4 normalizer that aggregates longitudinal lab trends, metabolic panels, vital signs, medications, and conditions into an actionable clinical view.
+                </p>
+            </div>
+        </section>
+
+        <!-- Architecture Callout -->
+        <section class="p-8 rounded-xl bg-zinc-900/40 border border-zinc-800 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <h3 class="text-sm font-semibold text-zinc-200">How Authorization Works</h3>
+                <span class="text-[11px] font-mono text-zinc-400">SMART on FHIR Standalone Patient Launch &bull; RFC 7636 PKCE</span>
+            </div>
+            <div class="p-4 rounded-lg bg-zinc-950 border border-zinc-800/80 font-mono text-xs text-zinc-300 space-y-1 overflow-x-auto">
+                <div>1. Local instance initiates OAuth with PKCE challenge (S256)</div>
+                <div>2. Patient logs into Epic MyChart / Kaiser Permanente via encrypted TLS</div>
+                <div>3. Provider redirects to <span class="text-zinc-100">health.syntropylabs.io/callback</span> (Zero-Knowledge Relay)</div>
+                <div>4. Browser instantly forwards authorization code to <span class="text-zinc-100">http://localhost:8000/callback</span></div>
+                <div>5. Local Python engine redeems code with PKCE verifier directly against FHIR server</div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="border-t border-zinc-800/80 pt-8 pb-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400">
+            <div>
+                &copy; 2026 Syntropy Labs. Syntropy Health is open source and local-first.
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="/docs" class="hover:text-white transition">Documentation</a>
+                <a href="/privacy" class="hover:text-white transition">Privacy Policy</a>
+                <a href="/terms" class="hover:text-white transition">Terms of Service</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
