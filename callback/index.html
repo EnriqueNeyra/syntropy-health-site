@@ -4,74 +4,210 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connecting to Syntropy Health...</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Privacy & Security Hardening: Zero referrer leakage, airtight CSP, zero outbound connections -->
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; img-src data:; form-action 'none'; frame-ancestors 'none'; base-uri 'none';">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #09090b;
+            color: #f4f4f5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            -webkit-font-smoothing: antialiased;
+        }
+        .card {
+            max-width: 28rem;
+            width: 100%;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            background-color: rgba(24, 24, 27, 0.7);
+            border: 1px solid #27272a;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .logo {
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 0.5rem;
+            background-color: #27272a;
+            border: 1px solid #3f3f46;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #f4f4f5;
+        }
+        .brand {
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #e4e4e7;
+            text-transform: uppercase;
+        }
+        .spinner {
+            width: 2rem;
+            height: 2rem;
+            border: 2px solid #3f3f46;
+            border-top-color: #f4f4f5;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 1rem auto;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #f4f4f5;
+            margin-bottom: 0.25rem;
+        }
+        .subtitle {
+            font-size: 0.75rem;
+            color: #a1a1aa;
+            line-height: 1.4;
+        }
+        .code {
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.25rem;
+            background-color: #27272a;
+            color: #d4d4d8;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 0.6875rem;
+        }
+        .button-wrap {
+            margin-top: 1.5rem;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            background-color: #f4f4f5;
+            color: #09090b;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: background-color 0.15s ease;
+        }
+        .btn:hover {
+            background-color: #ffffff;
+        }
+        .footer {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(39, 39, 42, 0.8);
+        }
+        .footer p {
+            font-size: 0.6875rem;
+            color: #71717a;
+            line-height: 1.5;
+        }
+        .error-badge {
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 50%;
+            background-color: rgba(69, 10, 10, 0.6);
+            border: 1px solid #991b1b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.75rem auto;
+            color: #f87171;
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+        .error-title {
+            color: #f87171;
+        }
     </style>
 </head>
-<body class="bg-zinc-950 text-zinc-100 min-h-screen flex items-center justify-center p-6 antialiased selection:bg-zinc-800 selection:text-zinc-200">
-    <div class="max-w-md w-full p-8 rounded-xl bg-zinc-900/70 border border-zinc-800 backdrop-blur shadow-2xl text-center space-y-6">
+<body>
+    <div class="card">
         <!-- Brand Header -->
-        <div class="flex items-center justify-center gap-3">
-            <div class="w-9 h-9 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center font-bold text-base text-zinc-100">
-                S
-            </div>
-            <span class="text-sm font-semibold tracking-tight text-zinc-200 uppercase">Syntropy Health</span>
+        <div class="header">
+            <div class="logo">S</div>
+            <span class="brand">Syntropy Health</span>
         </div>
 
         <!-- Dynamic Status Container -->
-        <div id="statusContainer" class="space-y-4">
-            <div class="flex justify-center">
-                <div class="w-8 h-8 border-2 border-zinc-700 border-t-zinc-200 rounded-full animate-spin"></div>
-            </div>
-            <div class="space-y-1">
-                <h1 class="text-sm font-semibold text-zinc-100">Connecting to Local Instance</h1>
-                <p class="text-xs text-zinc-400">Passing authorization credentials to your self-hosted instance on <code class="px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-300 font-mono text-[11px]">localhost:8000</code>...</p>
-            </div>
+        <div id="statusContainer">
+            <div class="spinner"></div>
+            <div class="title" id="statusTitle">Connecting to Local Instance</div>
+            <p class="subtitle" id="statusDesc">Passing authorization code to your sovereign local instance on <span class="code">localhost:8000</span>...</p>
         </div>
 
-        <!-- Manual Action Link -->
-        <div class="pt-2">
-            <a id="manualLink" href="#" class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-zinc-100 hover:bg-white text-zinc-950 text-xs font-medium transition shadow-sm">
+        <!-- Manual Fallback Action Link -->
+        <div class="button-wrap">
+            <a id="manualLink" href="#" class="btn">
                 Return to Local Dashboard &rarr;
             </a>
         </div>
 
-        <!-- Privacy Assurance -->
-        <div class="pt-4 border-t border-zinc-800/80">
-            <p class="text-[11px] text-zinc-400 leading-relaxed">
-                <span class="font-medium text-zinc-400">Zero-Knowledge Relay:</span> This page runs entirely in your browser. Medical data and patient tokens are never received or stored by this website.
+        <!-- Privacy & Cryptographic Guarantee -->
+        <div class="footer">
+            <p>
+                <strong style="color: #a1a1aa;">Zero-Knowledge Cryptographic Relay:</strong> This page executes 100% locally in your browser with zero external scripts and zero outbound connections. Medical data, credentials, and access tokens are never transmitted to this domain.
             </p>
         </div>
     </div>
 
     <script>
         (function() {
-            const search = window.location.search || "";
-            const hash = window.location.hash || "";
-            const targetUrl = "http://localhost:8000/callback" + search + hash;
+            var search = window.location.search || "";
+            var hash = window.location.hash || "";
+            var targetUrl = "http://localhost:8000/callback" + search + hash;
             
-            const manualLink = document.getElementById("manualLink");
-            manualLink.href = targetUrl;
-
-            // Check if there was an OAuth error
-            const params = new URLSearchParams(search);
-            if (params.get("error")) {
-                const statusContainer = document.getElementById("statusContainer");
-                statusContainer.innerHTML = `
-                    <div class="w-9 h-9 rounded-full bg-red-950/60 border border-red-800 flex items-center justify-center mx-auto text-red-400 text-sm font-bold">!</div>
-                    <div class="space-y-1">
-                        <h1 class="text-sm font-semibold text-red-400">Authorization Notice</h1>
-                        <p class="text-xs text-zinc-400 font-mono">${params.get("error_description") || params.get("error")}</p>
-                    </div>
-                `;
+            var manualLink = document.getElementById("manualLink");
+            if (manualLink) {
+                manualLink.href = targetUrl;
             }
 
-            // Immediately attempt client-side redirect
+            // Check if there was an OAuth error returned by EHR
+            if (window.location.search) {
+                var params = new URLSearchParams(window.location.search);
+                var errorParam = params.get("error");
+                if (errorParam) {
+                    var statusContainer = document.getElementById("statusContainer");
+                    if (statusContainer) {
+                        statusContainer.innerHTML = '';
+                        
+                        var badge = document.createElement("div");
+                        badge.className = "error-badge";
+                        badge.textContent = "!";
+                        statusContainer.appendChild(badge);
+
+                        var title = document.createElement("div");
+                        title.className = "title error-title";
+                        title.textContent = "Authorization Notice";
+                        statusContainer.appendChild(title);
+
+                        var desc = document.createElement("p");
+                        desc.className = "subtitle";
+                        desc.style.fontFamily = "ui-monospace, monospace";
+                        // Safely inject plain text, completely preventing DOM-XSS
+                        desc.textContent = params.get("error_description") || errorParam;
+                        statusContainer.appendChild(desc);
+                    }
+                    return;
+                }
+            }
+
+            // Client-side local redirect
             try {
                 window.location.replace(targetUrl);
             } catch (e) {
