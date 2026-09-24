@@ -6,7 +6,7 @@
     <title>Connecting to Syntropy Health...</title>
     <!-- Privacy & Security Hardening: Zero referrer leakage, airtight CSP, zero outbound connections -->
     <meta name="referrer" content="no-referrer">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; img-src data:; form-action 'none'; frame-ancestors 'none'; base-uri 'none';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; img-src data:; form-action 'none'; base-uri 'none';">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -148,7 +148,7 @@
         <div id="statusContainer">
             <div class="spinner"></div>
             <div class="title" id="statusTitle">Connecting to Local Instance</div>
-            <p class="subtitle" id="statusDesc">Passing authorization code to your sovereign local instance on <span class="code">localhost:8000</span>...</p>
+            <p class="subtitle" id="statusDesc">Returning the one-time authorization code to your Syntropy Health instance at <span class="code" id="targetHost">localhost:8000</span>…</p>
         </div>
 
         <!-- Manual Fallback Action Link -->
@@ -161,58 +161,65 @@
         <!-- Privacy & Cryptographic Guarantee -->
         <div class="footer">
             <p>
-                <strong style="color: #a1a1aa;">Zero-Knowledge Cryptographic Relay:</strong> This page executes 100% locally in your browser with zero external scripts and zero outbound connections. Medical data, credentials, and access tokens are never transmitted to this domain.
+                <strong style="color: #a1a1aa;">Zero-knowledge relay:</strong> this static page runs entirely in your browser, loads nothing external and makes no network requests. The authorization code it forwards is useless without the PKCE secret held only by your instance.
             </p>
         </div>
     </div>
 
     <script>
-        (function() {
-            var search = window.location.search || "";
-            var hash = window.location.hash || "";
-            var targetUrl = "http://localhost:8000/callback" + search + hash;
-            
-            var manualLink = document.getElementById("manualLink");
-            if (manualLink) {
-                manualLink.href = targetUrl;
-            }
+        // Routes the browser back to the Syntropy Health instance that started the sign-in.
+        // The instance address travels in the OAuth `state` (base64url JSON, field "d") and is
+        // accepted only if it is a private, loopback, Tailscale or mDNS host — so this page can
+        // never be abused as an open redirect. Nothing is stored or sent anywhere else.
+        (function () {
+            var DEFAULT_TARGET = "http://localhost:8000";
 
-            // Check if there was an OAuth error returned by EHR
-            if (window.location.search) {
-                var params = new URLSearchParams(window.location.search);
-                var errorParam = params.get("error");
-                if (errorParam) {
-                    var statusContainer = document.getElementById("statusContainer");
-                    if (statusContainer) {
-                        statusContainer.innerHTML = '';
-                        
-                        var badge = document.createElement("div");
-                        badge.className = "error-badge";
-                        badge.textContent = "!";
-                        statusContainer.appendChild(badge);
-
-                        var title = document.createElement("div");
-                        title.className = "title error-title";
-                        title.textContent = "Authorization Notice";
-                        statusContainer.appendChild(title);
-
-                        var desc = document.createElement("p");
-                        desc.className = "subtitle";
-                        desc.style.fontFamily = "ui-monospace, monospace";
-                        // Safely inject plain text, completely preventing DOM-XSS
-                        desc.textContent = params.get("error_description") || errorParam;
-                        statusContainer.appendChild(desc);
-                    }
-                    return;
+            function decodeState(state) {
+                if (!state) return {};
+                try {
+                    var b64 = state.replace(/-/g, "+").replace(/_/g, "/");
+                    while (b64.length % 4) b64 += "=";
+                    var parsed = JSON.parse(atob(b64));
+                    return parsed && typeof parsed === "object" ? parsed : {};
+                } catch (e) {
+                    var m = /(?:^|;)dest=([^;]+)/.exec(state);
+                    return m ? { d: decodeURIComponent(m[1]) } : {};
                 }
             }
 
-            // Client-side local redirect
-            try {
-                window.location.replace(targetUrl);
-            } catch (e) {
-                window.location.href = targetUrl;
+            function isPrivateHost(host) {
+                host = host.toLowerCase().replace(/^\[|\]$/g, "");
+                if (host === "localhost" || host === "::1" || /\.(localhost|local|ts\.net|home\.arpa|internal|lan)$/.test(host)) return true;
+                var ip = host.split(".").map(Number);
+                if (ip.length === 4 && ip.every(function (n) { return n >= 0 && n <= 255 && Math.floor(n) === n; })) {
+                    var a = ip[0], b = ip[1];
+                    return a === 10 || a === 127 || (a === 192 && b === 168) || (a === 172 && b >= 16 && b <= 31) || (a === 100 && b >= 64 && b <= 127);
+                }
+                return /^f[cd][0-9a-f]{2}:/.test(host);
             }
+
+            var params = new URLSearchParams(window.location.search);
+            var target = DEFAULT_TARGET;
+            var dest = decodeState(params.get("state") || "").d;
+            if (dest) {
+                try {
+                    var u = new URL(dest);
+                    if ((u.protocol === "http:" || u.protocol === "https:") && isPrivateHost(u.hostname)) target = u.origin;
+                } catch (e) { /* keep default */ }
+            }
+            var targetUrl = target + "/callback" + window.location.search + window.location.hash;
+
+            var hostLabel = document.getElementById("targetHost");
+            if (hostLabel) hostLabel.textContent = target.replace(/^https?:\/\//, "");
+            var manualLink = document.getElementById("manualLink");
+            if (manualLink) manualLink.href = targetUrl;
+
+            // Errors are forwarded too, so the instance can clear its pending sign-in and explain.
+            if (params.get("error")) {
+                var title = document.getElementById("statusTitle");
+                if (title) title.textContent = "Returning to Syntropy Health";
+            }
+            window.location.replace(targetUrl);
         })();
     </script>
 </body>

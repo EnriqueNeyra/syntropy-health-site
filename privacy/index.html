@@ -1,122 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy — Syntropy Health</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .font-mono { font-family: 'JetBrains Mono', monospace; }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+  <title>Privacy Policy — Syntropy Health</title>
+  <meta name="description" content="How Syntropy Health and health.syntropylabs.io handle personal and health data.">
+  <link rel="stylesheet" href="/assets/site.css">
 </head>
-<body class="bg-zinc-950 text-zinc-200 min-h-screen p-6 sm:p-12 antialiased selection:bg-zinc-800 selection:text-zinc-200">
-    <div class="max-w-3xl mx-auto space-y-10">
-        <!-- Navigation -->
-        <header class="flex items-center justify-between border-b border-zinc-800/80 pb-6">
-            <a href="/" class="flex items-center gap-3 hover:opacity-80 transition">
-                <div class="w-8 h-8 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center font-bold text-sm text-zinc-100">
-                    S
-                </div>
-                <span class="text-sm font-semibold tracking-tight text-zinc-200 uppercase">Syntropy Health</span>
-            </a>
-            <nav class="flex items-center gap-6 text-xs text-zinc-400">
-                <a href="/docs" class="hover:text-white transition">Documentation</a>
-                <a href="/terms" class="hover:text-white transition">Terms</a>
-                <a href="/privacy" class="text-white font-medium">Privacy</a>
-            </nav>
-        </header>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="/"><span class="mark">S</span>Syntropy Health</a>
+  <nav class="site">
+    <a href="/docs/">How it works</a><a href="/privacy/" aria-current="page">Privacy</a><a href="/terms/">Terms</a>
+    <a href="https://github.com/EnriqueNeyra/syntropy-health">Source</a>
+  </nav>
+</div></header>
+<main><div class="wrap">
+<h1>Privacy Policy</h1>
+<p class="meta">Effective September 24, 2026 · Syntropy Labs</p>
 
-        <!-- Document Content -->
-        <main class="space-y-8 text-sm leading-relaxed text-zinc-300">
-            <div class="space-y-2">
-                <div class="inline-block px-2.5 py-1 rounded bg-zinc-900 border border-zinc-800 text-[11px] font-mono text-zinc-400 uppercase tracking-wider">
-                    Privacy Policy & Data Use Disclosure
-                </div>
-                <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-100">Patient Data Privacy Policy</h1>
-                <p class="text-xs text-zinc-400 font-mono">Last Updated: September 2026 &bull; Compliant with ONC USCDI & Epic Data Use Standards</p>
-            </div>
+<div class="note"><p><b>Summary.</b> Syntropy Health is software you run yourself. Your health records are downloaded to and stored on
+your own device. Syntropy Labs does not operate a service that receives, stores or analyzes your health information, and never sells or shares it.</p></div>
 
-            <!-- Core Statement -->
-            <div class="p-4 rounded-lg bg-zinc-900/60 border border-zinc-800 text-xs text-zinc-300 space-y-1.5">
-                <span class="font-semibold text-zinc-100 uppercase tracking-wider text-[11px]">Key Summary:</span>
-                <p>Syntropy Health is designed as a <strong>local-first, self-hosted</strong> personal health record platform. Syntropy Labs <strong>does not host, collect, process, sell, or transmit your protected health information (PHI) to any cloud servers or third parties</strong>. All medical records remain exclusively under your direct physical and cryptographic custody on your personal device.</p>
-            </div>
+<h2>1. Who this covers</h2>
+<p>This policy covers the Syntropy Health software ("the App"), this website (health.syntropylabs.io) and the authorization relay described below.</p>
 
-            <!-- Section 1 -->
-            <section class="space-y-3">
-                <h2 class="text-base font-semibold text-zinc-100">1. Data Sovereignty & Architecture</h2>
-                <p>Syntropy Health empowers individuals to aggregate and view their own longitudinal medical records under the rights established by HIPAA and the 21st Century Cures Act. The application operates using a client-side and self-hosted model:</p>
-                <ul class="list-disc list-inside space-y-1.5 text-zinc-400 text-xs pl-2">
-                    <li>Connections established via SMART on FHIR communicate directly and point-to-point between your local device and your healthcare institution (e.g. Kaiser Permanente, Epic MyChart).</li>
-                    <li>Tokens, diagnostic results, vital signs, medications, and conditions are cached exclusively in local memory and local database files on your own hardware.</li>
-                    <li>The domain <code class="px-1 py-0.5 rounded bg-zinc-900 text-zinc-300 font-mono text-[11px]">health.syntropylabs.io</code> acts solely as a zero-knowledge static relay to route OAuth callbacks into your local runtime. It does not possess a backend database and cannot log or intercept health records.</li>
-                </ul>
-            </section>
+<h2>2. Information the App accesses</h2>
+<p>Only when you connect an account and approve access, the App retrieves, read-only, the information you authorize:</p>
+<ul>
+  <li><b>From healthcare organizations</b> (via SMART on FHIR): demographics; conditions; medications; allergies; laboratory results and vital signs;
+    immunizations; visits; procedures; clinical notes and diagnostic reports; care team, care plans and goals; implanted devices; insurance coverage.</li>
+  <li><b>From wearables</b> you connect (Oura, WHOOP): sleep, readiness/recovery, heart rate and heart-rate variability, activity and related metrics.</li>
+  <li><b>From files you import</b> and from the optional iPhone companion app: Apple Health data you choose to share.</li>
+</ul>
+<p>All of it is stored in a database on the device where you run the App. Syntropy Labs has no access to that device or database.</p>
 
-            <!-- Section 2 -->
-            <section class="space-y-3">
-                <h2 class="text-base font-semibold text-zinc-100">2. Categories of Data Accessed</h2>
-                <p>When you explicitly authorize access through your health network's patient portal, Syntropy Health requests access strictly to authorized standard USCDI clinical resources:</p>
-                <ul class="list-disc list-inside space-y-1.5 text-zinc-400 text-xs pl-2">
-                    <li><strong>Demographics:</strong> Patient legal name, date of birth, gender, and identifier.</li>
-                    <li><strong>Observations:</strong> Diagnostic laboratory panels, vital signs, and clinical measurements.</li>
-                    <li><strong>Medication Requests:</strong> Active and past prescribed medications, dosage instructions, and schedules.</li>
-                    <li><strong>Conditions:</strong> Problem lists, active diagnoses, and clinical status.</li>
-                </ul>
-            </section>
+<h2>3. What passes through Syntropy infrastructure</h2>
+<ul>
+  <li><b>Callback page</b> (health.syntropylabs.io/callback): a static page that runs in your browser and forwards a one-time authorization code to your
+    own instance. It makes no network requests and stores nothing. The code cannot be used without a secret that exists only on your device.</li>
+  <li><b>Wearable token broker</b> (syntropy-auth-relay.syntropylabs.workers.dev): because Oura and WHOOP require a confidential client secret,
+    this worker exchanges the authorization code for tokens and immediately returns them to your browser in the URL fragment, which is not sent to any server.
+    It also renews tokens on your instance's request. It does not store tokens or health data and does not access your health data APIs.
+    Our hosting provider (Cloudflare) may keep standard operational request logs (such as IP address and time); URL fragments are never part of those requests.</li>
+  <li><b>This website</b> uses no cookies, analytics, advertising or third-party resources.</li>
+</ul>
 
-            <!-- Section 3 -->
-            <section class="space-y-3">
-                <h2 class="text-base font-semibold text-zinc-100">3. Prohibition of Commercialization & Third-Party Sharing</h2>
-                <p>Syntropy Labs enforces an absolute prohibition on data commercialization:</p>
-                <ul class="list-disc list-inside space-y-1.5 text-zinc-400 text-xs pl-2">
-                    <li><strong>No Sale of Data:</strong> We never sell, lease, rent, or trade your personal or health data.</li>
-                    <li><strong>No Advertising:</strong> Syntropy Health contains zero advertisements, tracker scripts, or third-party behavioral pixels.</li>
-                    <li><strong>No Data Brokering:</strong> No clinical records are made available to insurers, pharmaceutical companies, data brokers, or AI model aggregators.</li>
-                </ul>
-            </section>
+<h2>4. How information is used</h2>
+<p>Information stays on your device and is used only to show you your records, trends and summaries, and to let you export them.
+Syntropy Labs does not use your information for advertising, profiling, research or training AI models.</p>
 
-            <!-- Section 4 -->
-            <section class="space-y-3">
-                <h2 class="text-base font-semibold text-zinc-100">4. Cryptographic Security & Transmission</h2>
-                <p>All communication with clinical health networks utilizes industry-standard security protocols:</p>
-                <ul class="list-disc list-inside space-y-1.5 text-zinc-400 text-xs pl-2">
-                    <li><strong>OAuth 2.0 with PKCE (RFC 7636):</strong> Standalone authorization uses high-entropy SHA-256 Proof Key for Code Exchange to prevent authorization code interception.</li>
-                    <li><strong>End-to-End Transport Layer Security:</strong> All API requests to EHR endpoints are protected via TLS 1.2+ encryption.</li>
-                </ul>
-            </section>
+<h2>5. Sharing and sale</h2>
+<p>We do not sell, rent, license or share personal or health information with anyone, including insurers, employers, data brokers or advertisers.
+Data leaves your device only when you export it or when you configure the App to send it somewhere.</p>
 
-            <!-- Section 5 -->
-            <section class="space-y-3">
-                <h2 class="text-base font-semibold text-zinc-100">5. Data Retention, Export & Deletion</h2>
-                <p>Because Syntropy Health runs locally under your control, you maintain total authority over data retention:</p>
-                <ul class="list-disc list-inside space-y-1.5 text-zinc-400 text-xs pl-2">
-                    <li>You can disconnect and wipe all local cached patient records, sessions, and tokens with a single click in the user interface.</li>
-                    <li>Deleting the application directory or local database completely removes all stored data from your physical machine.</li>
-                    <li>You may revoke Syntropy Health's access at any time through your healthcare provider's MyChart application settings.</li>
-                </ul>
-            </section>
+<h2>6. Security</h2>
+<p>Connections use TLS and OAuth 2.0 with PKCE. The App encrypts access tokens at rest, protects the dashboard with a passphrase you choose, and keeps
+an activity log of sign-ins, syncs and exports. You are responsible for securing the device that runs the App.</p>
 
-            <!-- Section 6 -->
-            <section class="space-y-3">
-                <h2 class="text-base font-semibold text-zinc-100">6. Contact & Inquiries</h2>
-                <p>For questions regarding this privacy policy or the local-first architecture of Syntropy Health, contact:</p>
-                <p class="text-xs font-mono text-zinc-400">Syntropy Labs &bull; security@syntropylabs.io</p>
-            </section>
-        </main>
+<h2>7. Your choices</h2>
+<ul>
+  <li>Disconnect any source in the App; you can keep or delete the data already downloaded.</li>
+  <li>Export your data (FHIR R4 bundle, CSV, full database backup) or delete it at any time.</li>
+  <li>Revoke the App's access in your patient portal or wearable account settings.</li>
+</ul>
 
-        <footer class="border-t border-zinc-800/80 pt-6 text-xs text-zinc-400 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div>&copy; 2026 Syntropy Labs. All rights reserved.</div>
-            <div class="flex gap-4">
-                <a href="/" class="hover:text-white transition">Home</a>
-                <a href="/terms" class="hover:text-white transition">Terms of Service</a>
-                <a href="/docs" class="hover:text-white transition">Documentation</a>
-            </div>
-        </footer>
-    </div>
+<h2>8. Children</h2>
+<p>Caregivers may use the App to manage records of minors they are authorized to access through their healthcare organization's proxy-access features.</p>
+
+<h2>9. Changes</h2>
+<p>We will post changes to this policy on this page with a new effective date.</p>
+
+<h2>10. Contact</h2>
+<p>Syntropy Labs · <a href="mailto:privacy@syntropylabs.io">privacy@syntropylabs.io</a></p>
+</div></main>
+<footer class="site"><div class="wrap">
+  <span>&copy; 2026 Syntropy Labs · Open source, self-hosted, local-first.</span>
+  <span><a href="/docs/">How it works</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></span>
+</div></footer>
 </body>
 </html>
