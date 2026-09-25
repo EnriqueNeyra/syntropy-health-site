@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+  <title>Set up Syntropy Health</title>
+  <meta name="description" content="Run Syntropy Health on your own computer or home server in about 15 minutes, then connect the iPhone app.">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="/"><span class="mark">S</span>Syntropy Health</a>
+  <nav class="site">
+    <a href="/setup/" aria-current="page">Set up</a><a href="/docs/">How it works</a><a href="/privacy/">Privacy</a>
+    <a href="https://github.com/EnriqueNeyra/syntropy-health">Source</a>
+  </nav>
+</div></header>
+<main><div class="wrap">
+
+<section class="hero">
+  <div>
+    <span class="eyebrow">Get started</span>
+    <h1>Your whole health record, on a computer you own.</h1>
+    <p class="lead">Syntropy Health brings your patient-portal records, lab results, Apple Health, Oura and WHOOP into one
+      private app that runs at home. Setup takes about 15 minutes, and the iPhone app connects in a few taps.</p>
+    <div class="cta"><a class="btn primary" href="#install">Start setup</a><a class="btn" href="#faq">Questions</a></div>
+    <ul class="facts">
+      <li>Free and open source</li><li>No account to create</li><li>Your data stays on your hardware</li>
+    </ul>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+    <svg viewBox="0 0 360 250" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <g stroke="#3a3a42" stroke-width="1.5" stroke-dasharray="4 5">
+        <path d="M118 125 H150"/><path d="M252 70 C232 70 232 110 214 118"/><path d="M252 125 H214"/><path d="M252 180 C232 180 232 140 214 132"/>
+      </g>
+      <rect x="40" y="62" width="76" height="126" rx="16" fill="#141418" stroke="#27272c" stroke-width="1.5"/>
+      <rect x="64" y="70" width="28" height="6" rx="3" fill="#27272c"/>
+      <rect x="52" y="88" width="52" height="22" rx="6" fill="#1b1b20"/><rect x="52" y="116" width="24" height="22" rx="6" fill="#1b1b20"/>
+      <rect x="80" y="116" width="24" height="22" rx="6" fill="#1b1b20"/><rect x="52" y="144" width="52" height="30" rx="6" fill="#1b1b20"/>
+      <path d="M58 166 l8 -8 7 5 9 -11 7 6 8 -6" stroke="#a5b4fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="150" y="84" width="64" height="82" rx="12" fill="#1b1b20" stroke="#a5b4fc" stroke-width="1.5"/>
+      <rect x="166" y="100" width="32" height="32" rx="9" fill="#f4f4f5"/>
+      <text x="182" y="122" text-anchor="middle" font-family="-apple-system, Segoe UI, sans-serif" font-size="17" font-weight="800" fill="#0b0b0e">S</text>
+      <rect x="164" y="142" width="36" height="4" rx="2" fill="#3a3a42"/><rect x="170" y="151" width="24" height="4" rx="2" fill="#3a3a42"/>
+      <g font-family="-apple-system, Segoe UI, sans-serif" font-size="11.5" fill="#b4b4bb">
+        <rect x="252" y="54" width="100" height="32" rx="9" fill="#141418" stroke="#27272c"/><text x="302" y="74" text-anchor="middle">Patient portals</text>
+        <rect x="252" y="109" width="100" height="32" rx="9" fill="#141418" stroke="#27272c"/><text x="302" y="129" text-anchor="middle">Lab results</text>
+        <rect x="252" y="164" width="100" height="32" rx="9" fill="#141418" stroke="#27272c"/><text x="302" y="184" text-anchor="middle">Oura · WHOOP</text>
+        <text x="78" y="210" text-anchor="middle">iPhone app</text><text x="182" y="186" text-anchor="middle">Your computer</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section class="section">
+  <h2>What you get</h2>
+  <div class="grid two">
+    <div class="card feature">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></span>
+      <h3>Every record in one place</h3>
+      <p>Conditions, medications, allergies, labs, visits, immunizations and notes from Epic MyChart, Oracle Health,
+        athenahealth, eClinicalWorks and the VA, merged and de-duplicated.</p>
+    </div>
+    <div class="card feature">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+      <h3>Wearables next to your labs</h3>
+      <p>Sleep, heart rate, HRV, workouts and more from Apple Health, Oura and WHOOP, shown day by day alongside your
+        clinical trends, with overlapping devices counted once.</p>
+    </div>
+    <div class="card feature">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 17l.7 1.8 1.8.7-1.8.7L19 22l-.7-1.8-1.8-.7 1.8-.7z"/></svg></span>
+      <h3>Ask your own AI</h3>
+      <p>Get answers and coaching from your data with your own Claude, OpenAI, Gemini or OpenRouter key, or connect
+        Claude Desktop and other agents directly. Read-only, and every lookup is logged.</p>
+    </div>
+    <div class="card feature">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+      <h3>Private by design</h3>
+      <p>Everything lives in one database on your computer, with sign-in tokens encrypted. No cloud account, no
+        analytics, and nothing sold or shared.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Choose where it runs</h2>
+  <p>Syntropy Health is a small app that runs in the background and opens in your browser. Pick the computer that suits you;
+    you can move later with a backup.</p>
+  <div class="paths">
+    <div class="card path recommended">
+      <span class="badge">Most people</span>
+      <h3>Your Mac or Windows PC</h3>
+      <p>The quickest start. Syncs whenever the computer is awake; your iPhone keeps new Health data until it's back.</p>
+      <ul><li>Mac (Apple silicon or Intel) or Windows 10/11</li><li>About 2 GB of free memory and a few GB of disk</li></ul>
+    </div>
+    <div class="card path">
+      <span class="badge muted">Always on</span>
+      <h3>A home server or NAS</h3>
+      <p>A Mac mini, mini PC, Raspberry Pi 4/5 (64-bit), Unraid, TrueNAS or any Linux box. Stays in sync around the clock.</p>
+      <ul><li>Docker with Docker Compose</li><li>Same steps below, run over SSH</li></ul>
+    </div>
+    <div class="card path soon">
+      <span class="badge muted">Coming soon</span>
+      <h3>Desktop app</h3>
+      <p>A one-click Mac app with a menu-bar icon and automatic updates, no Docker needed.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="install">
+  <h2>Set it up</h2>
+  <ol class="steps">
+    <li>
+      <h3>Install Docker Desktop</h3>
+      <p>Docker runs Syntropy Health in its own sealed box, so it doesn't change anything else on your computer.
+        <a href="https://www.docker.com/products/docker-desktop/">Download Docker Desktop</a>, install it and open it once.
+        On a home server, install Docker Engine and the Compose plugin instead.</p>
+    </li>
+    <li>
+      <h3>Download Syntropy Health</h3>
+      <p><a class="btn small" href="https://github.com/EnriqueNeyra/syntropy-health/archive/refs/heads/main.zip">Download the ZIP</a></p>
+      <p>Unzip it, rename the folder to <code>syntropy-health</code> and move it to your home folder. Keep it there: your
+        data is saved inside it, in the <code>data</code> folder.</p>
+      <details class="more"><summary>Prefer Git?</summary>
+        <pre class="cmd">git clone https://github.com/EnriqueNeyra/syntropy-health ~/syntropy-health</pre>
+        <p>Updating is then a <code>git pull</code> away.</p>
+      </details>
+    </li>
+    <li>
+      <h3>Start it</h3>
+      <p>Open Terminal (Mac: press <kbd>⌘</kbd> <kbd>Space</kbd> and type Terminal) or PowerShell (Windows: Start menu), then run:</p>
+      <div class="os">
+        <div><span class="label">Mac, Linux, home server</span>
+<pre class="cmd">cd ~/syntropy-health
+docker compose up -d</pre></div>
+        <div><span class="label">Windows</span>
+<pre class="cmd">cd $HOME\syntropy-health
+docker compose up -d</pre></div>
+      </div>
+      <p class="tip">The first start takes a few minutes while it builds. After that it starts on its own whenever Docker
+        does. If your computer asks whether to allow incoming connections, choose Allow so your iPhone can reach it.</p>
+    </li>
+    <li>
+      <h3>Open it in your browser</h3>
+      <p>Go to <a href="http://localhost:8000">http://localhost:8000</a>, enter your name and choose a passphrase. Add family
+        members as separate profiles whenever you like.</p>
+    </li>
+    <li>
+      <h3>Connect your iPhone</h3>
+      <p>In the Syntropy Health iPhone app, open <b>Settings → Connect to my server</b> and enter your computer's address
+        and your passphrase. You can also pair with a code from <b>Sources → iPhone &amp; Apple Watch → Pair iPhone</b>.</p>
+      <p class="tip">The address is your computer's address on your home Wi-Fi, for example
+        <code>http://192.168.1.20:8000</code>. On a Mac it's in System Settings → Wi-Fi → Details. Once connected, the whole
+        app appears in the iPhone app's Syntropy tab and your Health data syncs in the background.</p>
+    </li>
+    <li>
+      <h3>Add your records</h3>
+      <p>Open <b>Sources → Connect a health system</b>, find your hospital or clinic and sign in with your patient-portal
+        login. Connect Oura or WHOOP the same way, or type in lab results from a report.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="section">
+  <div class="split">
+    <div class="card card-lg">
+      <h3>Using it away from home</h3>
+      <p>Syntropy Health doesn't send your data through our servers, so reaching it from outside your home is up to you. The
+        simplest private option is <a href="https://tailscale.com/">Tailscale</a>: install it on your computer and iPhone
+        with the same account, then add your computer's Tailscale address in the iPhone app under
+        <b>Settings → Addresses</b>.</p>
+      <p class="tip">Avoid opening port 8000 to the internet. If you do make it reachable publicly, keep a strong passphrase on.</p>
+    </div>
+    <div class="card card-lg">
+      <h3>Bring your own AI</h3>
+      <p>In <b>Settings → AI &amp; agents</b>, paste an API key from Anthropic, OpenAI, Google or OpenRouter to use
+        <b>Ask</b> and to read lab reports from photos or PDFs. Claude Desktop, Claude Code and other MCP apps can also
+        connect directly; the same page shows the exact setup.</p>
+      <p class="tip">Your AI provider receives your questions and only the data it looks up.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <h2>Questions</h2>
+  <details class="faq"><summary>Does my health data go to Syntropy?</summary>
+    <p>No. Records download straight from your health system to your computer, and your iPhone sends Health data straight
+      to it too. Patient-portal sign-in passes a one-time code through a static page on this site, in your browser; Oura
+      and WHOOP sign-in uses a small relay because those services require a secret. Neither sees your health data.
+      <a href="/docs/">How it works</a></p></details>
+  <details class="faq"><summary>What happens when my computer is asleep?</summary>
+    <p>Nothing is lost. Your iPhone keeps new Health data and sends it when the computer is awake again, and scheduled
+      record and wearable syncs catch up. For round-the-clock syncing, run it on an always-on machine.</p></details>
+  <details class="faq"><summary>Does it cost anything?</summary>
+    <p>No. Syntropy Health is free and open source. If you use Ask, your AI provider bills you directly for your own key.</p></details>
+  <details class="faq"><summary>How do I update?</summary>
+    <p>Download the new ZIP and replace everything in your <code>syntropy-health</code> folder except the <code>data</code>
+      folder (or run <code>git pull</code>), then run <code>docker compose up -d --build</code> in that folder.</p></details>
+  <details class="faq"><summary>How do I back up my data?</summary>
+    <p>In the app, open <b>Settings → Your data → Download database backup</b>, or copy the <code>data</code> folder. The
+      backup restores everything on a new computer.</p></details>
+  <details class="faq"><summary>Can I use the iPhone app without a server?</summary>
+    <p>Yes. The app browses, charts and exports your Apple Health data on its own, and can send it on a schedule to a
+      webhook, Home Assistant, MQTT or a cloud folder. Connect a server whenever you're ready.</p></details>
+  <details class="faq"><summary>Is it a replacement for my doctor or patient portal?</summary>
+    <p>No. It's a personal copy of your records for understanding and sharing them. Always check anything important with
+      your care team. See the <a href="/terms/">terms</a>.</p></details>
+</section>
+
+<section class="band">
+  <div><h2>Ready when you are</h2><p>Install Docker, download Syntropy Health and open it in your browser.</p></div>
+  <a class="btn primary" href="#install">Start setup</a>
+</section>
+
+</div></main>
+<footer class="site"><div class="wrap">
+  <span>&copy; 2026 Syntropy Labs · Open source, self-hosted, local-first.</span>
+  <span><a href="/setup/">Set up</a><a href="/docs/">How it works</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></span>
+</div></footer>
+</body>
+</html>
