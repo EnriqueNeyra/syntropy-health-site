@@ -33,8 +33,11 @@ your own device. Syntropy Labs does not operate a service that receives, stores 
   <li><b>From healthcare organizations</b> (via SMART on FHIR): demographics; conditions; medications; allergies; laboratory results and vital signs;
     immunizations; visits; procedures; clinical notes and diagnostic reports; care team, care plans and goals; implanted devices; insurance coverage.</li>
   <li><b>From wearables</b> you connect (Oura, WHOOP): sleep, readiness/recovery, heart rate and heart-rate variability, activity and related metrics.</li>
-  <li><b>From files you import</b> and from the optional iPhone companion app: Apple Health data you choose to share.</li>
+  <li><b>From files you import</b> and from the optional iPhone app: Apple Health data you choose to share.</li>
 </ul>
+<p>The iPhone app reads only the Apple Health types you allow. It sends that data only where you direct it: your own instance,
+  and any export or automation destination you set up yourself (for example a webhook, Home Assistant, an MQTT broker or a
+  cloud-storage folder). Syntropy Labs receives none of it.</p>
 <p>All of it is stored in a database on the device where you run the App. Syntropy Labs has no access to that device or database.</p>
 
 <h2>3. What passes through Syntropy infrastructure</h2>

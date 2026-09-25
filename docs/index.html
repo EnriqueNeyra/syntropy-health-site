@@ -73,7 +73,7 @@ developer apps can keep the whole exchange local.</p>
 <ul>
   <li>Dashboard protected by a passphrase (scrypt); sessions are opaque, hashed server-side, HttpOnly, SameSite.</li>
   <li>OAuth tokens and secrets encrypted at rest; a per-instance key never leaves the machine.</li>
-  <li>Companion devices pair with single-use codes and receive individually revocable tokens.</li>
+  <li>Phones sign in with the passphrase or a single-use code and receive individually revocable device tokens; the passphrase is never stored on the phone.</li>
   <li>Every sign-in, sync and export is written to a local activity log the user can review.</li>
 </ul>
 
