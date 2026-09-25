@@ -33,7 +33,8 @@ your own device. Syntropy Labs does not operate a service that receives, stores 
   <li><b>From healthcare organizations</b> (via SMART on FHIR): demographics; conditions; medications; allergies; laboratory results and vital signs;
     immunizations; visits; procedures; clinical notes and diagnostic reports; care team, care plans and goals; implanted devices; insurance coverage.</li>
   <li><b>From wearables</b> you connect (Oura, WHOOP): sleep, readiness/recovery, heart rate and heart-rate variability, activity and related metrics.</li>
-  <li><b>From files you import</b> and from the optional iPhone app: Apple Health data you choose to share.</li>
+  <li><b>From files you import</b>: Apple Health exports, and lab reports (PDFs or photos of paper reports), which the App reads on your device.</li>
+  <li><b>From the optional iPhone app</b>: Apple Health data you choose to share.</li>
 </ul>
 <p>The iPhone app reads only the Apple Health types you allow. It sends that data only where you direct it: your own instance,
   and any export or automation destination you set up yourself (for example a webhook, Home Assistant, an MQTT broker or a
@@ -47,7 +48,8 @@ your own device. Syntropy Labs does not operate a service that receives, stores 
   <li><b>Wearable token broker</b> (syntropy-auth-relay.syntropylabs.workers.dev): because Oura and WHOOP require a confidential client secret,
     this worker exchanges the authorization code for tokens and immediately returns them to your browser in the URL fragment, which is not sent to any server.
     It also renews tokens on your instance's request. It does not store tokens or health data and does not access your health data APIs.
-    Our hosting provider (Cloudflare) may keep standard operational request logs (such as IP address and time); URL fragments are never part of those requests.</li>
+    Its request logging is turned off, though our hosting provider (Cloudflare) may keep standard operational records (such as IP address and time).
+    You can skip it entirely by registering your own Oura or WHOOP developer app in your instance's settings.</li>
   <li><b>This website</b> uses no cookies, analytics, advertising or third-party resources.</li>
 </ul>
 
@@ -57,7 +59,9 @@ Syntropy Labs does not use your information for advertising, profiling, research
 
 <h2>5. Sharing and sale</h2>
 <p>We do not sell, rent, license or share personal or health information with anyone, including insurers, employers, data brokers or advertisers.
-Data leaves your device only when you export it or when you configure the App to send it somewhere.</p>
+Data leaves your device only when you export it or when you configure the App to send it somewhere. If you add your own AI
+provider key (for the Ask assistant, or to read a lab report with AI), the data involved is sent to that provider under
+your account and its terms; Syntropy Labs is not a party to it.</p>
 
 <h2>6. Security</h2>
 <p>Connections use TLS and OAuth 2.0 with PKCE. The App encrypts access tokens at rest, protects the dashboard with a passphrase you choose, and keeps

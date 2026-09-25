@@ -55,8 +55,16 @@ Local SQLite database              records, normalized trends, encrypted tokens<
 </ul>
 <p>Oura and WHOOP don't support PKCE-only public clients and require a client secret. For those two, an edge worker at
 <code>syntropy-auth-relay.syntropylabs.workers.dev</code> performs the code exchange, then hands the tokens to your instance in the
-URL <em>fragment</em> (never sent to any server) and keeps no copy. Renewals go through the same worker. Users who register their own
-developer apps can keep the whole exchange local.</p>
+URL <em>fragment</em> (never sent to any server) and keeps no copy. Renewals go through the same worker. The worker:</p>
+<ul>
+  <li>has request logging turned off and is rate-limited per IP address;</li>
+  <li>asks Oura and WHOOP only for sleep, activity, heart and workout data, not email, profile or body measurements;</li>
+  <li>never calls the Oura or WHOOP data APIs itself.</li>
+</ul>
+<p>To keep tokens off the worker entirely, register your own free Oura or WHOOP developer app, enter its client ID and secret in
+<b>Settings → Wearables</b>, and set the wearable redirect URI in <b>Settings → Sync &amp; relay</b> to the one you registered: your
+instance's own <code>/callback</code> address, or <code>https://health.syntropylabs.io/callback</code>, which only forwards a code that is
+useless without your secret. Sign-in and renewals then go straight from your instance to Oura or WHOOP.</p>
 
 <h2>4. Data handled</h2>
 <table>
